@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Image, Button } from 'react-native';
+import { View, Text, Image } from 'react-native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default class PhotoSection extends Component {
     render() {
@@ -21,8 +22,13 @@ export default class PhotoSection extends Component {
                         source={{uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/b/b7/OperationRepo.jpg/250px-OperationRepo.jpg'}} />
                 </View>
                 {/* This is the heart button */}
-                <View>
-                    <Button title='Heart'/>
+                <View style={styles.heartContainer}>
+                    <Ionicons
+                        color="red"
+                        name="ios-heart-empty"
+                        size={30}
+                        onPress={actions.like}
+                    />
                 </View>
                 {/* This is the caption section */}
                 <View style={styles.imageMeta}>
@@ -31,6 +37,14 @@ export default class PhotoSection extends Component {
                 </View>
             </View>
         );
+    }
+}
+
+const actions = {
+    like: (e) => {
+        console.log(e)
+        console.log(this.name)
+        this.name = "ios-heart"
     }
 }
 
