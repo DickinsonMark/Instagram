@@ -4,13 +4,15 @@ import { View, Text, Image, Button } from 'react-native';
 export default class PhotoSection extends Component {
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 {/* This is the User section */}
-                <View>
+                <View style={styles.thumbnailSection}>
                     <Image 
-                        style={styles.userAvatar}
+                        style={styles.thumbnail}
                         source={{uri: 'https://www.icmagroup.org/assets/repo-faq-1-400x299.jpg'}} />
-                    <Text>Username</Text>
+                    <View style={styles.userContainer}>
+                        <Text>Username</Text>
+                    </View>
                 </View>
                 {/* This is the actual photo section */}
                 <View>
@@ -23,8 +25,8 @@ export default class PhotoSection extends Component {
                     <Button title='Heart'/>
                 </View>
                 {/* This is the caption section */}
-                <View>
-                    <Text>Username</Text>
+                <View style={styles.imageMeta}>
+                    <Text style={styles.username}>Username</Text>
                     <Text>some caption</Text>
                 </View>
             </View>
@@ -33,12 +35,34 @@ export default class PhotoSection extends Component {
 }
 
 const styles = {
-    userAvatar: {
+    container: {
+        margin: 10
+    },
+    thumbnailSection: {
+        flexDirection: 'row',
+        padding: 5,
+        borderBottomColor: '#ddd',
+        borderBottomWidth: 1,
+    },
+    thumbnail: {
         width: 50,
-        height: 50
+        height: 50,
+        borderRadius: 25,
+    },
+    userContainer: {
+        justifyContent: 'center',
+        padding: 5
     },
     mainPhoto: {
         width: null,
         height: 400
+    },
+    imageMeta: {
+        flexDirection: 'row',
+        paddingRight: 5,
+    },
+    username: {
+        fontWeight: 'bold',
+        paddingRight: 5
     }
 }
